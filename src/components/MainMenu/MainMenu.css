@@ -1,0 +1,17 @@
+.mainmenu {
+  height: 10vh;
+  background-color: #D9D9D9;
+  border-radius: 0px 0px 5px 5px;
+  border: 1px solid #bab0a3;
+  grid-column: -1 / 1;
+  grid-row: 1;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainmenu img {
+  margin-left: 20px;
+  height: 80%;
+}
