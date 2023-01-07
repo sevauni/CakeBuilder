@@ -2,7 +2,11 @@
 box-sizing: border-box;
 margin: 0;
 padding: 0;
+}
 
+body{
+background-color: #F9D195 ;
+  
 }
 
 .wrapper {
@@ -12,4 +16,6 @@ padding: 0;
   grid-template-columns: 10vh 2fr 1fr 2fr 10vh;
   grid-template-rows: 10vh 10vh 1fr 5vh 10vh;
   align-items: center;
+  background-color: #F9D195 ;
+  gap: 1%;
 }

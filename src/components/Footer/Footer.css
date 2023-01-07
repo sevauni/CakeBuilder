@@ -1,18 +1,31 @@
 .footer {
-
+  height: 10vh;
   background-color: #D9D9D9;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 5px 5px 0px 0px;
   border: 1px solid #bab0a3;
   grid-column: -1 / 1;
-  grid-row: 5 /6;
-  padding: 20px 0 0 20px;
+  grid-row: -1;
   align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.test {
-  width: 30px;
-  height: 30px;
- background-color: blue;
- align-self: center;
- 
+.submit-button {
+  margin-right: 40px;
+  height: 80%;
+
+}
+
+.calorie-bage {
+  margin-left: 30px;
+  height: 80%;
+  padding: 0 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bab0a3;
+  border-radius: 10px;
+  background-color: #bab0a3;
+  font-size: 1.4em;
 }
