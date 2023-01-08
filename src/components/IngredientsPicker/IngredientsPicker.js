@@ -35,7 +35,14 @@ class IngredientsPicker extends Component {
   onUpdateCrust = (e) => {
     const crustState = e.target.value;
     this.setState({crustState:crustState});
-    console.log(this.state.crustState);
+
+  }
+
+
+  onUpdateThickness= (e) => {
+    const thicknessState= e.target.value;
+    this.setState({thicknessState:thicknessState});
+
   }
 
 
@@ -67,8 +74,8 @@ class IngredientsPicker extends Component {
           variant='outline-success'
           name="thick"
           value={name}
-          checked={false}
-          onChange={(e) => console.log(e.currentTarget.value)}
+          checked={name === this.state.thicknessState}
+          onChange={this.onUpdateThickness}
         >
           {label}
         </ToggleButton>
@@ -86,6 +93,8 @@ class IngredientsPicker extends Component {
         <ButtonGroup className='buttons'>
           {buttonsThickness}
         </ButtonGroup>
+        <Button variant="primary"></Button>{' '}
+        <br />
 
         <Button variant="primary" size="lg">
           Add a new layer
