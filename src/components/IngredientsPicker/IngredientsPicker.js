@@ -1,8 +1,9 @@
 import Button from 'react-bootstrap/Button';
-// import React, { useState } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { Component } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
 import './IngredientsPicker.css'
@@ -29,19 +30,28 @@ class IngredientsPicker extends Component {
       { name: 'thick3 ', label: 'Thick' },
     ];
 
+
+    this.colorSwitchButton = [
+      { name: 'red', label: 'Red' },
+      { name: 'orange', label: 'Orange' },
+      { name: 'yellow', label: 'Yellow' },
+      { name: 'brown', label: 'Brown' },
+      { name: 'blue', label: 'Blue' },
+      { name: 'green', label: 'Green' },
+    ];
+
   }
 
 
   onUpdateCrust = (e) => {
     const crustState = e.target.value;
-    this.setState({crustState:crustState});
+    this.setState({ crustState: crustState });
 
   }
 
-
-  onUpdateThickness= (e) => {
-    const thicknessState= e.target.value;
-    this.setState({thicknessState:thicknessState});
+  onUpdateThickness = (e) => {
+    const thicknessState = e.target.value;
+    this.setState({ thicknessState: thicknessState });
 
   }
 
@@ -82,6 +92,24 @@ class IngredientsPicker extends Component {
       )
     })
 
+
+    const colorPickerOptions = this.colorSwitchButton.map(({ name, label }) => {
+      return (
+        <Dropdown.Item id={{ name }}>{label}</Dropdown.Item>
+      )
+    });
+    const colorPicker = (
+      <DropdownButton
+        id="dropdown-basic-button"
+        title="Pick a color"
+        drop="start"
+        onClick={e => { console.log(e) }}
+      >
+        {colorPickerOptions}
+      </DropdownButton>
+    )
+
+
     return (
       <div className="ingredients-picker" >
         <h5>Biscuits</h5>
@@ -93,7 +121,9 @@ class IngredientsPicker extends Component {
         <ButtonGroup className='buttons'>
           {buttonsThickness}
         </ButtonGroup>
-        <Button variant="primary"></Button>{' '}
+
+        <h5>Color</h5>
+        {colorPicker}
         <br />
 
         <Button variant="primary" size="lg">
