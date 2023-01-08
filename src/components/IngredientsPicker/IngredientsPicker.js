@@ -14,7 +14,8 @@ class IngredientsPicker extends Component {
     super(props);
     this.state = {
       crustState: "regularBiscuit",
-      thicknessState: 0
+      thicknessState: 0,
+      color: 'red'
     }
 
     this.crustSwitchButton = [
@@ -46,15 +47,18 @@ class IngredientsPicker extends Component {
   onUpdateCrust = (e) => {
     const crustState = e.target.value;
     this.setState({ crustState: crustState });
-
   }
 
   onUpdateThickness = (e) => {
     const thicknessState = e.target.value;
     this.setState({ thicknessState: thicknessState });
-
   }
 
+  onUpdateColor = (e) => {
+    const color = e.target.name;
+    this.setState({ color: color });
+
+  }
 
   render() {
     const buttonsCrust = this.crustSwitchButton.map(({ name, label }, index) => {
@@ -73,8 +77,6 @@ class IngredientsPicker extends Component {
         </ToggleButton>
       )
     })
-
-
     const buttonsThickness = this.thicknessSwitchButton.map(({ name, label }, index) => {
       return (
         <ToggleButton
@@ -91,11 +93,14 @@ class IngredientsPicker extends Component {
         </ToggleButton>
       )
     })
-
-
-    const colorPickerOptions = this.colorSwitchButton.map(({ name, label }) => {
+    const colorPickerOptions = this.colorSwitchButton.map(({ name, label }, index) => {
       return (
-        <Dropdown.Item id={{ name }}>{label}</Dropdown.Item>
+        <Dropdown.Item
+         id={{ name }}
+         key={`color-${index}`}
+         name={name}
+         onClick={this.onUpdateColor}
+        >{label}</Dropdown.Item>
       )
     });
     const colorPicker = (
@@ -103,33 +108,42 @@ class IngredientsPicker extends Component {
         id="dropdown-basic-button"
         title="Pick a color"
         drop="start"
-        onClick={e => { console.log(e) }}
+        
+        style={{
+          // backgroundColor: 'red',
+        }}
       >
         {colorPickerOptions}
       </DropdownButton>
     )
-
-
+    const colorPickerWindow = this.state.color;
+    console.log(colorPickerWindow);
     return (
-      <div className="ingredients-picker" >
-        <h5>Biscuits</h5>
-        <ButtonGroup className='buttons'>
-          {buttonsCrust}
-        </ButtonGroup>
-
-        <h5>Thickness</h5>
-        <ButtonGroup className='buttons'>
-          {buttonsThickness}
-        </ButtonGroup>
-
-        <h5>Color</h5>
+    <div className="ingredients-picker" >
+      <h5>Biscuits</h5>
+      <ButtonGroup className='buttons'>
+        {buttonsCrust}
+      </ButtonGroup>
+      <h5>Thickness</h5>
+      <ButtonGroup className='buttons'>
+        {buttonsThickness}
+      </ButtonGroup>
+      <h5>Color</h5>
+      <div className='color-buttons'>
         {colorPicker}
-        <br />
-
-        <Button variant="primary" size="lg">
-          Add a new layer
-        </Button>
+        <Button variant="primary"
+          style={{
+            marginLeft: '2rem',
+            color: 'rgba(0, 0, 0, 0)',
+            backgroundColor: `${colorPickerWindow}`,
+          }}
+        >0</Button>
       </div>
+      <Button variant="primary" size="lg">
+        Add a new layer
+      </Button>
+      <br />
+    </div>
     );
   }
 
