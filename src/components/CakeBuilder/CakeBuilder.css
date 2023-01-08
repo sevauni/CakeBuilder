@@ -4,7 +4,37 @@
     grid-row: 3/4;
     align-self: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; 
   }
+
+  .cakebuilder div:first-child{
+    position: relative;
+  }
+
+
+  .cake-layer{
+    flex: 0 0 35px;
+    width: 300px;
+    background-color: brown;
+    border: 2px solid;
+  }
+
+ 
+
+
   
+
+
+  .cake-topping{
+    -webkit-clip-path: url(#topping);
+    clip-path: url(#topping);
+  }
+
+  .cake-layer-top{
+    position: absolute;
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+  }
