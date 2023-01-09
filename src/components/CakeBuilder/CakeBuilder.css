@@ -4,18 +4,3 @@
     justify-self: center;
 
   }
-
-  .cake-layer{
-    transform: translate(0, -10%);
-    flex: 1 1 100px;
-    /* transform: scale(2, 2); */
-  }
-
-
-  .cake-layer-top{
-    flex-wrap: 0;
- 
-    min-width: 200px;
-    width: 400px;
-
-  }

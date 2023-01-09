@@ -1,66 +1,63 @@
 import './CakeBuilder.css'
 
 
-const cakeClasses = 'cake-layer';
-
-const CakeBottom = () => {
+const cakePlate = (yShift) => {
   return (
-    <svg fill="none" viewBox="0 0 479 219" xmlns="http://www.w3.org/2000/svg" className={cakeClasses}>
-      <path d="M471 8L8 127V211.5L471 89.5V8Z" fill="#FFB86C" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-    </svg>
-  );
+    <g>
+      <path transform={`translate(0 ${yShift})`} d="M214.75 361.5C333.353 361.5 429.5 300.723 429.5 225.75C429.5 150.777 333.353 90 214.75 90C96.1469 90 0 150.777 0 225.75C0 300.723 96.1469 361.5 214.75 361.5Z" fill="#D9D9D9" />
+      <path transform={`translate(0 ${yShift})`} d="M422.5 225.75C422.5 259.99 400.529 292.01 362.86 315.825C325.28 339.58 272.935 354.502 214.75 354.502C156.565 354.502 104.22 339.58 66.64 315.825C28.9715 292.013 7 259.995 7 225.75C7 191.505 28.9705 159.49 66.64 135.675C104.22 111.919 156.565 96.998 214.75 96.998C272.935 96.998 325.28 111.92 362.86 135.675C400.528 159.486 422.5 191.505 422.5 225.75Z" stroke="black" stroke-opacity="0.8" stroke-width="14" />
+      <path transform={`translate(0 ${yShift})`} d="M214.75 337C315.404 337 397 287.192 397 225.75C397 164.308 315.404 114.5 214.75 114.5C114.096 114.5 32.5 164.308 32.5 225.75C32.5 287.192 114.096 337 214.75 337Z" fill="#D9D9D9" />
+      <path transform={`translate(0 ${yShift})`} d="M390 225.75C390 253.106 371.807 279.01 339.975 298.44C308.263 317.798 264.005 329.999 214.75 329.999C165.495 329.999 121.24 317.798 89.525 298.44C57.6915 279.008 39.5 253.105 39.5 225.75C39.5 198.396 57.6935 172.49 89.525 153.06C121.238 133.702 165.495 121.501 214.75 121.501C264.005 121.501 308.26 133.702 339.975 153.06C371.809 172.492 390 198.396 390 225.75Z" stroke="black" stroke-opacity="0.5" stroke-width="14" />
+    </g>
+  )
+}
+const cakeLayer = (yShift) => {
+  return (
+    <path transform={`translate(0 ${yShift})`} d="M338.5 116.5L107 176V218.25L338.5 157.25V116.5Z" fill="#FFB86C" stroke="black" stroke-width="7.5" stroke-linejoin="round" />
+  )
+}
+const cakeTop = (yShift) => {
+  return (
+    <g>
+      <path transform={`translate(0 ${yShift})`} d="M340.07 81.55C340.068 81.507 340.063 81.4645 340.061 81.422C338.954 62.066 325.671 42.9005 300.19 28.127C274.653 13.3195 241.51 5.6145 208.055 5.0025L107.505 140.292L340.075 81.5525L340.07 81.55Z" fill="#EB5989" />
+      <path transform={`translate(0 ${yShift})`} d="M107.5 143.75L209.25 6.5C252.333 10 338.5 30.5 338.5 84.5M107.5 143.75L338.5 84.5M107.5 143.75V187L338.5 127.5V84.5" stroke="black" stroke-width="7.5" stroke-linejoin="round" />
+      <path transform={`translate(0 ${yShift})`} d="M338.5 85.25L107 144.75V187L338.5 126V85.25Z" fill="#FFB86C" stroke="black" stroke-width="7.5" stroke-linejoin="round" />
+    </g>
+  )
 }
 
+const CakeBuilder = () => {
+let layerAmount = 6;
 
-const CakeLayer = () => {
+  let result = [];
+
+  if (layerAmount > 6) {
+    return "ERROR! more than 6 layers!"
+  }
+
+  if (layerAmount === 1) {
+    result.push(cakeTop(90));
+  }
+
+  if (layerAmount > 1) {
+    result.push(cakeTop(-1));
+
+    for (let index = 0; index < layerAmount; index++) {
+      result.push(cakeLayer(70 - index * 20))
+    }
+  }
+
+
   return (
-    <svg fill="none" viewBox="0 0 479 300" xmlns="http://www.w3.org/2000/svg" className={cakeClasses}>
-      <path d="M471 8L8 127V211.5L471 89.5V8Z" fill="#FFB86C" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-    </svg>
-  );
-}
-
-
-
-const CakeTop = () => {
-  return (
-    <svg width="300" height="300" fill="none" viewBox="-50 150 600 250" xmlns="http://www.w3.org/2000/svg" >
-
-      <ellipse transform="translate(0 -20)"  cx="429.5" cy="271.5" rx="429.5" ry="271.5" fill="#D9D9D9" />
-      <path transform="translate(0 -20)"  d="m845 271.5c0 68.481-43.941 132.52-119.28 180.15-75.16 47.51-179.85 77.354-296.22 77.354s-221.06-29.844-296.22-77.354c-75.337-47.623-119.28-111.66-119.28-180.15s43.941-132.52 119.28-180.15c75.16-47.511 179.85-77.354 296.22-77.354s221.06 29.844 296.22 77.354c75.337 47.623 119.28 111.66 119.28 180.15z" stroke="#000" stroke-opacity=".8" stroke-width="28" />
-      <ellipse transform="translate(0 -20)"  cx="429.5" cy="271.5" rx="364.5" ry="222.5" fill="#D9D9D9" />
-      <path transform="translate(0 -20)" d="m780 271.5c0 54.711-36.387 106.52-100.05 145.38-63.425 38.716-151.94 63.118-250.45 63.118s-187.02-24.402-250.45-63.118c-63.667-38.864-100.05-90.671-100.05-145.38s36.387-106.52 100.05-145.38c63.425-38.716 151.94-63.118 250.45-63.118s187.02 24.402 250.45 63.118c63.667 38.864 100.05 90.671 100.05 145.38z" stroke="#000" stroke-opacity=".5" stroke-width="28" />
-
-
-
-      <path transform="translate(0 -20)" d="m474.14 158.1c-5e-3 -0.086-0.014-0.171-0.019-0.256-2.214-38.712-28.78-77.043-79.741-106.59-51.074-29.615-117.36-45.025-184.27-46.249l-201.1 270.58 465.14-117.48z" fill="#EB5989" />
-      <path transform="translate(0 -20)" d="M9 282.5L212.5 8C298.667 15 471 56 471 164M9 282.5L471 164M9 282.5V369L471 250V164" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-      <path transform="translate(0 -20)" d="M471 165.5L8 284.5V369L471 247V165.5Z" fill="#FFB86C" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-
-      <path d="M471 8L8 127V211.5L471 89.5V8Z" transform="translate(0 200)" fill="#FFB86C" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-      <path d="M471 8L8 127V211.5L471 89.5V8Z" transform="translate(0 250)" fill="#FFB86C" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-      <path d="M471 8L8 127V211.5L471 89.5V8Z" transform="translate(0 300)" fill="#FFB86C" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-      <path d="M471 8L8 127V211.5L471 89.5V8Z" transform="translate(0 350)" fill="#FFB86C" stroke="#000" stroke-linejoin="round" stroke-width="15" />
-
-
-
-    </svg>
-  );
-}
-
-
-
-
-const CakeBuilder = (props) => {
-  return (
-
     <div className="cakebuilder">
-      {CakeTop()}
-
-
-
+      <svg width="430" height="370" viewBox="0 0 430 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {cakePlate(0)}
+        {result}
+      </svg>
     </div>
   );
 }
+
+
 
 export default CakeBuilder;
