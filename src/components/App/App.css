@@ -13,7 +13,7 @@ background-color: #F9D195 ;
   display: grid;
   height: 100vh;
   justify-content: stretch;
-  grid-template-columns: 10vh 2fr 1fr 2fr 10vh;
+  grid-template-columns: 10vh 2fr 5vh 2fr 10vh;
   grid-template-rows: 10vh 10vh 1fr 10vh;
   align-items: center;
   background-color: #F9D195 ;
