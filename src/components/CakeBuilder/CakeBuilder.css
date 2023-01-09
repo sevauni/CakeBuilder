@@ -1,40 +1,21 @@
 .cakebuilder {
-    height: 10vh;
     grid-column:2;
     grid-row: 3/4;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end; 
-  }
+    justify-self: center;
 
-  .cakebuilder div:first-child{
-    position: relative;
   }
-
 
   .cake-layer{
-    flex: 0 0 35px;
-    width: 300px;
-    background-color: brown;
-    border: 2px solid;
+    transform: translate(0, -10%);
+    flex: 1 1 100px;
+    /* transform: scale(2, 2); */
   }
 
- 
-
-
-  
-
-
-  .cake-topping{
-    -webkit-clip-path: url(#topping);
-    clip-path: url(#topping);
-  }
 
   .cake-layer-top{
-    position: absolute;
-    background-color: blue;
-    width: 100%;
-    height: 100%;
+    flex-wrap: 0;
+ 
+    min-width: 200px;
+    width: 400px;
+
   }
