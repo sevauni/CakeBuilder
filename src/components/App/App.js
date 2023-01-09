@@ -14,96 +14,78 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        { type: 'biscuit', color: 'brown', thick: "1", hasTopping: false, calories: 500, cost: 300, id: 1 },
-        { type: 'biscuit', color: 'brown', thick: "1", hasTopping: false, calories: 500, cost: 300, id: 2 },
-        { type: 'biscuit', color: 'brown', thick: "1", hasTopping: false, calories: 500, cost: 300, id: 3 },
-      ],
+      data: [],
       calories: 500,
-      allergi: ['peanut', 'honey']
+      allergi: ['peanut', 'honey'],
+      topping: 'glaze',
+      cakeHeight: 20,
+
     }
     this.maxLayers = 6;
   }
-    
-  
 
-// deleteItem = (id) => {
-//   this.setState(({ data }) => {
-//     return {
-//       data: data.filter(item => item.id !== id)
-//     }
-//   })
-// }
-// // Да, пока могут добавляться пустые пользователи. Мы это еще исправим
-// addItem = (name, salary) => {
-//   const newItem = {
-//     name,
-//     salary,
-//     increase: false,
-//     rise: false,
-//     id: this.maxId++
-//   }
-//   this.setState(({ data }) => {
-//     const newArr = [...data, newItem];
-//     return {
-//       data: newArr
-//     }
-//   });
-// }
-
-// onToggleProp = (id, prop) => {
-//   this.setState(({ data }) => ({
-//     data: data.map(item => {
-//       if (item.id === id) {
-//         return { ...item, [prop]: !item[prop] }
-//       }
-//       return item;
-//     })
-//   }))
-// }
-
-// searchEmp = (items, term) => {
-//   if (term.length === 0) {
-//     return items;
-//   }
-
-//   return items.filter(item => {
-//     return item.name.indexOf(term) > -1
-//   })
-// }
-
-// onUpdateSearch = (term) => {
-//   this.setState({ term });
-// }
-
-// filterPost = (items, filter) => {
-//   switch (filter) {
-//     case 'rise':
-//       return items.filter(item => item.rise);
-//     case 'moreThen1000':
-//       return items.filter(item => item.salary > 1000);
-//     default:
-//       return items
-//   }
-// }
-
-// onFilterSelect = (filter) => {
-//   this.setState({ filter });
-// }
-
-render() {
-  const {calories} = this.state;
+  // 
 
 
-  return (
-    <div className='wrapper'>
-      <MainMenu />
-      <CakeBuilder />
-      <Footer calories = {calories}/>
-      <IngredientsPicker />
-    </div>
-  );
-}
+
+  // let result = data.map((item) => {
+  //   this.setState({ currentHeight: 40 });
+  //   return this.cakeLayer(this.state.currentHeight);
+  // });
+
+
+  addCakeLayer = (biscuit = 'regularBiscuit', thick = 1, calories = 300, cost = 100) => {
+
+
+    thick = Number(thick);
+    if (this.state.data.reduce((partialSum, { thick }) => partialSum + Number(thick), 0) >= 6) {
+      return;
+    }
+
+
+    // this.setState({
+    //   data: [{
+    //     type: `${biscuit}`,
+    //     color: 'brown',
+    //     thick: `${thick}`,
+    //     calories: `${calories}`,
+    //     cost: `${cost}`,
+    //     id: `${this.state.data.length}`,
+    //   }].concat(this.state.data)
+    // });
+
+
+    this.setState({
+      data: this.state.data.concat(
+        [{
+          type: `${biscuit}`,
+          color: 'brown',
+          thick: `${thick}`,
+          calories: `${calories}`,
+          cost: `${cost}`,
+          id: `${this.state.data.length}`,
+        }]
+      )
+    });
+
+    console.log(this.state.data);
+  }
+
+
+  render() {
+    const { calories } = this.state;
+    const { data, topping } = this.state;
+
+
+    return (
+      <div className='wrapper'>
+        <MainMenu />
+        <CakeBuilder data={data} hasTopping={topping} />
+        <Footer calories={calories} />
+        <IngredientsPicker onAdd={this.addCakeLayer} />
+      </div>
+    );
+  }
 }
 
 
