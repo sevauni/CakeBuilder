@@ -2,5 +2,25 @@
     grid-column:2;
     grid-row: 3/4;
     justify-self: center;
-
   }
+
+
+  .cakeanimation-play {
+    animation-name: cakeanimation;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes cakeanimation {
+  from {
+    transform: translate(0, -500px);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+
