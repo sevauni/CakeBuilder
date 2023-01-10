@@ -1,9 +1,6 @@
 import './CakeBuilder.css'
 import { Component } from 'react';
 
-
-
-
 class CakeBuilder extends Component {
 
 
@@ -17,24 +14,31 @@ class CakeBuilder extends Component {
       </g>
     )
   }
-  cakeLayer = (yShift, id,type) => {
+  cakeLayer = (yShift, type) => {
 
-switch (type) {
-  case value:
-    
-    break;
+    let color = 0;
 
-  default:
-    break;
-}
+    switch (type) {
 
+      case 'honeyBiscuit':
+        color = '#A27430'
+        break;
+
+      case 'peanutBiscuit':
+        color = '#F9E295'
+        break;
+
+      default:
+        color = '#FFA788'
+        break;
+    }
 
 
     return (
-      <g key = {id} className='cakeanimation-play'>
+      <g className='cakeanimation-play'>
         <path transform={`translate(1 ${yShift})`} d="M339.07 187.548C339.068 187.505 339.063 187.462 339.061 187.419C337.954 168.063 324.671 148.898 299.19 134.125C273.653 119.317 240.51 111.612 207.055 111L106.505 246.29L339.075 187.55L339.07 187.548Z" fill="#EB5989" />
         <path transform={`translate(1 ${yShift})`} d="M106.5 249.747L208.25 112.497C251.333 115.997 337.5 136.497 337.5 190.497M106.5 249.747L337.5 190.497M106.5 249.747V292.997L337.5 233.497V190.497" stroke="black" strokeWidth="7.5" strokeLinejoin="round" />
-        <path transform={`translate(1 ${yShift})`} d="M337.5 191.247L106 250.747V292.997L337.5 231.997V191.247Z" fill="#FFB86C" stroke="black" strokeWidth="7.5" strokeLinejoin="round" />
+        <path transform={`translate(1 ${yShift})`} d="M337.5 191.247L106 250.747V292.997L337.5 231.997V191.247Z" fill={color} stroke="black" strokeWidth="7.5" strokeLinejoin="round" />
       </g>
     )
   }
@@ -47,7 +51,7 @@ switch (type) {
     let prevThick = 0;
     for (const item of this.props.data) {
       prevThick = Number(item.thick);
-      result.push(this.cakeLayer(height));
+      result.push(this.cakeLayer(height,item.type));
       height = (-20 * prevThick) + height;
     }
 
@@ -56,7 +60,7 @@ switch (type) {
 
     return (
       <div className="cakebuilder">
-        <svg key = "cake" width="60vh" height="65vh" viewBox="0 0 430 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg key="cake" width="60vh" height="65vh" viewBox="0 0 430 330" fill="none" xmlns="http://www.w3.org/2000/svg">
           {this.cakePlate(10)}
           {result}
 
@@ -68,8 +72,5 @@ switch (type) {
 
 
 }
-
-
-
 
 export default CakeBuilder;

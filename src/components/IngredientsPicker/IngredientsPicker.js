@@ -12,14 +12,14 @@ class IngredientsPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      crustState: "regularBiscuit",
+      crustState: 'regularBiscuit',
       thicknessState: '1',
     }
 
     this.crustSwitchButton = [
       { name: 'regularBiscuit', label: 'Regular' },
       { name: 'honeyBiscuit', label: 'Honey' },
-      { name: 'peanutBiscuit ', label: 'Peanut' },
+      { name: 'peanutBiscuit', label: 'Peanut' },
     ];
 
     this.thicknessSwitchButton = [
