@@ -8,52 +8,36 @@ import IngredientsPicker from '../IngredientsPicker/IngredientsPicker';
 import './App.css';
 
 
-
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      calories: 500,
+      calories: 0,
       allergi: ['peanut', 'honey'],
       topping: 'glaze',
       cakeHeight: 20,
+      disabled: 0,
 
     }
     this.maxLayers = 6;
   }
 
-  // 
 
 
 
-  // let result = data.map((item) => {
-  //   this.setState({ currentHeight: 40 });
-  //   return this.cakeLayer(this.state.currentHeight);
-  // });
-
-
-  addCakeLayer = (biscuit = 'regularBiscuit', thick = 1, calories = 300, cost = 100) => {
-
-
+  addCakeLayer = (biscuit = 'regularBiscuit', thick = 1, caloriesInput = 300, cost = 100) => {
     thick = Number(thick);
+    let disabled;
+    let calories = caloriesInput + this.state.calories;
+
     if (this.state.data.reduce((partialSum, { thick }) => partialSum + Number(thick), 0) >= 6) {
+      this.setState({
+        disabled: 1,
+      });
       return;
     }
-
-
-    // this.setState({
-    //   data: [{
-    //     type: `${biscuit}`,
-    //     color: 'brown',
-    //     thick: `${thick}`,
-    //     calories: `${calories}`,
-    //     cost: `${cost}`,
-    //     id: `${this.state.data.length}`,
-    //   }].concat(this.state.data)
-    // });
-
+    
 
     this.setState({
       data: this.state.data.concat(
@@ -65,22 +49,26 @@ class App extends Component {
           cost: `${cost}`,
           id: `${this.state.data.length}`,
         }]
-      )
+      ),
+      calories: calories,
+      disabled: disabled,
+      
     });
+    
   }
 
 
   render() {
     const { calories } = this.state;
-    const { data, topping } = this.state;
+    const { data, topping ,disabled} = this.state;
 
 
     return (
       <div className='wrapper'>
         <MainMenu />
-        <CakeBuilder data={data} hasTopping={topping} />
+        <CakeBuilder data={data} hasTopping={topping}/>
         <Footer calories={calories} />
-        <IngredientsPicker onAdd={this.addCakeLayer} />
+        <IngredientsPicker onAdd={this.addCakeLayer} disabled={disabled}/>
       </div>
     );
   }

@@ -8,6 +8,7 @@ const MainMenu = () => {
 
 
         <img src={Logo} alt="Logo" />
+        <h1>The Little Bakery</h1>
 
     </nav>
   );

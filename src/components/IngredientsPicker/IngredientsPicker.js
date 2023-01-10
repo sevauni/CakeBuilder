@@ -13,7 +13,8 @@ class IngredientsPicker extends Component {
     super(props);
     this.state = {
       crustState: 'regularBiscuit',
-      thicknessState: '1',
+      thicknessState: '2',
+      calories: 200,
     }
 
     this.crustSwitchButton = [
@@ -86,7 +87,10 @@ class IngredientsPicker extends Component {
       </ButtonGroup>
       <Button variant="primary"
        size="lg"
-       onClick={e =>{this.props.onAdd(this.state.crustState,this.state.thicknessState,300,100)}}>
+       disabled={this.props.disabled}
+       onClick={e =>{this.props.onAdd(this.state.crustState,this.state.thicknessState,200,100)}}
+      
+       >
         Add a new layer
       </Button>
       <br />

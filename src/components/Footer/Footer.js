@@ -10,7 +10,13 @@ const Footer = ({calories}) => {
       <div className='calorie-bage'>
         Calories: {calories}
       </div>
-      <Button className='submit-button' variant="secondary" active>
+      <Button 
+      className='submit-button' 
+      variant="secondary" 
+      active 
+      style={{
+    fontsize: "1.4em"}}
+      >
         Order Cake
       </Button>{' '}
     </footer>

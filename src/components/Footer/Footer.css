@@ -11,15 +11,18 @@
   justify-content: space-between;
 }
 
+
+
+
 .submit-button {
   margin-right: 40px;
   height: 80%;
-
+  font-size: 1.4em;
 }
 
 .calorie-bage {
   margin-left: 30px;
-  height: 80%;
+  height: 75%;
   padding: 0 1em;
   display: flex;
   justify-content: center;

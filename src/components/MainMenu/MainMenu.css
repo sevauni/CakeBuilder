@@ -8,10 +8,17 @@
   align-self: center;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .mainmenu img {
   margin-left: 20px;
   height: 80%;
+}
+
+.mainmenu h1 {
+  margin-left: 20px;
+  height: 80%;
+  font-family: 'Edu QLD Beginner', cursive;
+  font-weight: 700;
 }
