@@ -1,5 +1,6 @@
 import { Component } from 'react';
 
+
 import MainMenu from '../MainMenu/MainMenu';
 import Footer from '../Footer/Footer';
 import CakeBuilder from '../CakeBuilder/CakeBuilder';
@@ -37,7 +38,7 @@ class App extends Component {
       });
       return;
     }
-    
+
 
     this.setState({
       data: this.state.data.concat(
@@ -52,23 +53,24 @@ class App extends Component {
       ),
       calories: calories,
       disabled: disabled,
-      
+
     });
-    
+
   }
 
 
   render() {
     const { calories } = this.state;
-    const { data, topping ,disabled} = this.state;
+    const { data, topping, disabled } = this.state;
 
 
     return (
       <div className='wrapper'>
+
         <MainMenu />
-        <CakeBuilder data={data} hasTopping={topping}/>
+        <CakeBuilder data={data} hasTopping={topping} />
         <Footer calories={calories} />
-        <IngredientsPicker onAdd={this.addCakeLayer} disabled={disabled}/>
+        <IngredientsPicker onAdd={this.addCakeLayer} disabled={disabled} />
       </div>
     );
   }
