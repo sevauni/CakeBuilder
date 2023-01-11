@@ -66,7 +66,6 @@ class App extends Component {
 
     return (
       <div className='wrapper'>
-
         <MainMenu />
         <CakeBuilder data={data} hasTopping={topping} />
         <Footer calories={calories} />
