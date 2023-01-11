@@ -11,5 +11,5 @@ Cake Builder concept for a small bakery to create customized products to appeal 
 ## Created using:
 
 * React
-* BootStrap
+* Bootstrap
 * SVG Constructor
